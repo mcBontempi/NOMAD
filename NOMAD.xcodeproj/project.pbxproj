@@ -21,6 +21,9 @@
 		FD078C7518FFAD21008EF932 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD078C5718FFAD21008EF932 /* UIKit.framework */; };
 		FD078C7D18FFAD21008EF932 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FD078C7B18FFAD21008EF932 /* InfoPlist.strings */; };
 		FD078C7F18FFAD21008EF932 /* NOMADTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FD078C7E18FFAD21008EF932 /* NOMADTests.m */; };
+		FDB54D4F18FFBC8B00442614 /* NomadHeaderLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = FDB54D4E18FFBC8B00442614 /* NomadHeaderLogo.png */; };
+		FDB54D5218FFC2A400442614 /* ScheduleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB54D5118FFC2A400442614 /* ScheduleTableViewCell.m */; };
+		FDB54D5518FFC78100442614 /* ItemDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB54D5418FFC78100442614 /* ItemDetailTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,11 @@
 		FD078C7A18FFAD21008EF932 /* NOMADTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NOMADTests-Info.plist"; sourceTree = "<group>"; };
 		FD078C7C18FFAD21008EF932 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FD078C7E18FFAD21008EF932 /* NOMADTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NOMADTests.m; sourceTree = "<group>"; };
+		FDB54D4E18FFBC8B00442614 /* NomadHeaderLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NomadHeaderLogo.png; path = assets/NomadHeaderLogo.png; sourceTree = "<group>"; };
+		FDB54D5018FFC2A400442614 /* ScheduleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleTableViewCell.h; sourceTree = "<group>"; };
+		FDB54D5118FFC2A400442614 /* ScheduleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleTableViewCell.m; sourceTree = "<group>"; };
+		FDB54D5318FFC78100442614 /* ItemDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemDetailTableViewCell.h; sourceTree = "<group>"; };
+		FDB54D5418FFC78100442614 /* ItemDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemDetailTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +120,7 @@
 		FD078C5918FFAD21008EF932 /* NOMAD */ = {
 			isa = PBXGroup;
 			children = (
+				FDB54D4D18FFBC7F00442614 /* assets */,
 				FD078C6218FFAD21008EF932 /* AppDelegate.h */,
 				FD078C6318FFAD21008EF932 /* AppDelegate.m */,
 				FD078C6518FFAD21008EF932 /* Main.storyboard */,
@@ -119,6 +128,10 @@
 				FD078C6918FFAD21008EF932 /* ViewController.m */,
 				FD078C6B18FFAD21008EF932 /* Images.xcassets */,
 				FD078C5A18FFAD21008EF932 /* Supporting Files */,
+				FDB54D5018FFC2A400442614 /* ScheduleTableViewCell.h */,
+				FDB54D5118FFC2A400442614 /* ScheduleTableViewCell.m */,
+				FDB54D5318FFC78100442614 /* ItemDetailTableViewCell.h */,
+				FDB54D5418FFC78100442614 /* ItemDetailTableViewCell.m */,
 			);
 			path = NOMAD;
 			sourceTree = "<group>";
@@ -150,6 +163,14 @@
 				FD078C7B18FFAD21008EF932 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FDB54D4D18FFBC7F00442614 /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				FDB54D4E18FFBC8B00442614 /* NomadHeaderLogo.png */,
+			);
+			name = assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,6 +252,7 @@
 				FD078C6C18FFAD21008EF932 /* Images.xcassets in Resources */,
 				FD078C5E18FFAD21008EF932 /* InfoPlist.strings in Resources */,
 				FD078C6718FFAD21008EF932 /* Main.storyboard in Resources */,
+				FDB54D4F18FFBC8B00442614 /* NomadHeaderLogo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,6 +273,8 @@
 			files = (
 				FD078C6A18FFAD21008EF932 /* ViewController.m in Sources */,
 				FD078C6418FFAD21008EF932 /* AppDelegate.m in Sources */,
+				FDB54D5518FFC78100442614 /* ItemDetailTableViewCell.m in Sources */,
+				FDB54D5218FFC2A400442614 /* ScheduleTableViewCell.m in Sources */,
 				FD078C6018FFAD21008EF932 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -456,6 +480,7 @@
 				FD078C8418FFAD21008EF932 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FD078C8518FFAD21008EF932 /* Build configuration list for PBXNativeTarget "NOMADTests" */ = {
 			isa = XCConfigurationList;
@@ -464,6 +489,7 @@
 				FD078C8718FFAD21008EF932 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
