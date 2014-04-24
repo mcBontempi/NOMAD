@@ -26,6 +26,8 @@
 		FD078C7518FFAD21008EF932 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD078C5718FFAD21008EF932 /* UIKit.framework */; };
 		FD078C7D18FFAD21008EF932 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FD078C7B18FFAD21008EF932 /* InfoPlist.strings */; };
 		FD078C7F18FFAD21008EF932 /* NOMADTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FD078C7E18FFAD21008EF932 /* NOMADTests.m */; };
+		FD9832A619090540005D3D04 /* OrderDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD9832A519090540005D3D04 /* OrderDetailsViewController.m */; };
+		FD9832A9190905BC005D3D04 /* OrderDetailsTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FD9832A8190905BC005D3D04 /* OrderDetailsTextTableViewCell.m */; };
 		FDB54D4F18FFBC8B00442614 /* NomadHeaderLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = FDB54D4E18FFBC8B00442614 /* NomadHeaderLogo.png */; };
 		FDB54D5518FFC78100442614 /* ProductTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB54D5418FFC78100442614 /* ProductTableViewCell.m */; };
 /* End PBXBuildFile section */
@@ -69,6 +71,10 @@
 		FD078C7A18FFAD21008EF932 /* NOMADTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NOMADTests-Info.plist"; sourceTree = "<group>"; };
 		FD078C7C18FFAD21008EF932 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FD078C7E18FFAD21008EF932 /* NOMADTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NOMADTests.m; sourceTree = "<group>"; };
+		FD9832A419090540005D3D04 /* OrderDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailsViewController.h; sourceTree = "<group>"; };
+		FD9832A519090540005D3D04 /* OrderDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailsViewController.m; sourceTree = "<group>"; };
+		FD9832A7190905BC005D3D04 /* OrderDetailsTextTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailsTextTableViewCell.h; sourceTree = "<group>"; };
+		FD9832A8190905BC005D3D04 /* OrderDetailsTextTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailsTextTableViewCell.m; sourceTree = "<group>"; };
 		FDB54D4E18FFBC8B00442614 /* NomadHeaderLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NomadHeaderLogo.png; path = assets/NomadHeaderLogo.png; sourceTree = "<group>"; };
 		FDB54D5318FFC78100442614 /* ProductTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductTableViewCell.h; sourceTree = "<group>"; };
 		FDB54D5418FFC78100442614 /* ProductTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductTableViewCell.m; sourceTree = "<group>"; };
@@ -146,19 +152,15 @@
 		FD078C5918FFAD21008EF932 /* NOMAD */ = {
 			isa = PBXGroup;
 			children = (
+				FD9832A3190904EE005D3D04 /* OrderDetailsViewController */,
+				FD9832A2190904D6005D3D04 /* HomeScreen */,
 				D6611F231908EAAB006B2275 /* Parser */,
 				FDB54D4D18FFBC7F00442614 /* assets */,
 				FD078C6218FFAD21008EF932 /* AppDelegate.h */,
 				FD078C6318FFAD21008EF932 /* AppDelegate.m */,
 				FD078C6518FFAD21008EF932 /* Main.storyboard */,
-				FD078C6818FFAD21008EF932 /* ViewController.h */,
-				FD078C6918FFAD21008EF932 /* ViewController.m */,
-				D6611F2F1908EBCE006B2275 /* Product.h */,
-				D6611F301908EBCE006B2275 /* Product.m */,
 				FD078C6B18FFAD21008EF932 /* Images.xcassets */,
 				FD078C5A18FFAD21008EF932 /* Supporting Files */,
-				FDB54D5318FFC78100442614 /* ProductTableViewCell.h */,
-				FDB54D5418FFC78100442614 /* ProductTableViewCell.m */,
 			);
 			path = NOMAD;
 			sourceTree = "<group>";
@@ -190,6 +192,30 @@
 				FD078C7B18FFAD21008EF932 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FD9832A2190904D6005D3D04 /* HomeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				FD078C6818FFAD21008EF932 /* ViewController.h */,
+				FD078C6918FFAD21008EF932 /* ViewController.m */,
+				D6611F2F1908EBCE006B2275 /* Product.h */,
+				D6611F301908EBCE006B2275 /* Product.m */,
+				FDB54D5318FFC78100442614 /* ProductTableViewCell.h */,
+				FDB54D5418FFC78100442614 /* ProductTableViewCell.m */,
+			);
+			name = HomeScreen;
+			sourceTree = "<group>";
+		};
+		FD9832A3190904EE005D3D04 /* OrderDetailsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FD9832A419090540005D3D04 /* OrderDetailsViewController.h */,
+				FD9832A519090540005D3D04 /* OrderDetailsViewController.m */,
+				FD9832A7190905BC005D3D04 /* OrderDetailsTextTableViewCell.h */,
+				FD9832A8190905BC005D3D04 /* OrderDetailsTextTableViewCell.m */,
+			);
+			name = OrderDetailsViewController;
 			sourceTree = "<group>";
 		};
 		FDB54D4D18FFBC7F00442614 /* assets */ = {
@@ -304,6 +330,8 @@
 				D6611F2A1908EACA006B2275 /* TFHpple.m in Sources */,
 				FD078C6418FFAD21008EF932 /* AppDelegate.m in Sources */,
 				FDB54D5518FFC78100442614 /* ProductTableViewCell.m in Sources */,
+				FD9832A9190905BC005D3D04 /* OrderDetailsTextTableViewCell.m in Sources */,
+				FD9832A619090540005D3D04 /* OrderDetailsViewController.m in Sources */,
 				FD078C6018FFAD21008EF932 /* main.m in Sources */,
 				D6611F311908EBCE006B2275 /* Product.m in Sources */,
 			);
