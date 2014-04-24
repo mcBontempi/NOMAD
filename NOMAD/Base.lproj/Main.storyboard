@@ -16,8 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="v36-ST-ytu">
-                                <rect key="frame" x="0.0" y="113" width="320" height="382"/>
+                            <tableView opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="v36-ST-ytu">
+                                <rect key="frame" x="0.0" y="113" width="320" height="455"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -64,14 +64,16 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.61960784310000006" green="0.0" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mNZ-Sn-V9x">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mNZ-Sn-V9x">
                                 <rect key="frame" x="0.0" y="503" width="320" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.61960784310000006" green="0.0" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="n5d-8e-Z4V"/>
                                 </constraints>
-                                <state key="normal" title="Button">
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="24"/>
+                                <state key="normal" title="NEXT">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -85,6 +87,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="mNZ-Sn-V9x" secondAttribute="trailing" id="0UH-q0-PFH"/>
                             <constraint firstItem="v36-ST-ytu" firstAttribute="leading" secondItem="Pbz-iJ-elP" secondAttribute="leading" id="9f3-KT-vdz"/>
                             <constraint firstItem="v36-ST-ytu" firstAttribute="top" secondItem="Pbz-iJ-elP" secondAttribute="bottom" id="Fd5-st-DOO"/>
                             <constraint firstItem="ges-Tg-Pvs" firstAttribute="leading" secondItem="9O2-cU-W3e" secondAttribute="leading" constant="95" id="Fi0-NN-Icf"/>
@@ -95,6 +98,7 @@
                             <constraint firstItem="oEy-H1-fcY" firstAttribute="top" secondItem="ges-Tg-Pvs" secondAttribute="bottom" constant="437" id="U9T-2v-7f4"/>
                             <constraint firstAttribute="bottom" secondItem="v36-ST-ytu" secondAttribute="bottom" id="UzO-JI-Do8"/>
                             <constraint firstAttribute="bottom" secondItem="mNZ-Sn-V9x" secondAttribute="bottom" id="VMy-sO-RLq"/>
+                            <constraint firstItem="mNZ-Sn-V9x" firstAttribute="leading" secondItem="9O2-cU-W3e" secondAttribute="leading" id="WIX-pL-ZK3"/>
                             <constraint firstItem="v36-ST-ytu" firstAttribute="leading" secondItem="9O2-cU-W3e" secondAttribute="leading" id="xU5-5u-gES"/>
                         </constraints>
                     </view>
