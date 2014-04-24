@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D6611F2A1908EACA006B2275 /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = D6611F251908EACA006B2275 /* TFHpple.m */; };
+		D6611F2B1908EACA006B2275 /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = D6611F271908EACA006B2275 /* TFHppleElement.m */; };
+		D6611F2C1908EACA006B2275 /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = D6611F291908EACA006B2275 /* XPathQuery.m */; };
+		D6611F311908EBCE006B2275 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = D6611F301908EBCE006B2275 /* Product.m */; };
+		D6611F321908ED51006B2275 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D6611F2D1908EB3C006B2275 /* libxml2.dylib */; };
 		FD078C5418FFAD21008EF932 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD078C5318FFAD21008EF932 /* Foundation.framework */; };
 		FD078C5618FFAD21008EF932 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD078C5518FFAD21008EF932 /* CoreGraphics.framework */; };
 		FD078C5818FFAD21008EF932 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD078C5718FFAD21008EF932 /* UIKit.framework */; };
@@ -37,6 +42,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D6611F241908EACA006B2275 /* TFHpple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TFHpple.h; path = Parser/TFHpple.h; sourceTree = "<group>"; };
+		D6611F251908EACA006B2275 /* TFHpple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TFHpple.m; path = Parser/TFHpple.m; sourceTree = "<group>"; };
+		D6611F261908EACA006B2275 /* TFHppleElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TFHppleElement.h; path = Parser/TFHppleElement.h; sourceTree = "<group>"; };
+		D6611F271908EACA006B2275 /* TFHppleElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TFHppleElement.m; path = Parser/TFHppleElement.m; sourceTree = "<group>"; };
+		D6611F281908EACA006B2275 /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XPathQuery.h; path = Parser/XPathQuery.h; sourceTree = "<group>"; };
+		D6611F291908EACA006B2275 /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XPathQuery.m; path = Parser/XPathQuery.m; sourceTree = "<group>"; };
+		D6611F2D1908EB3C006B2275 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		D6611F2F1908EBCE006B2275 /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Product.h; sourceTree = "<group>"; };
+		D6611F301908EBCE006B2275 /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product.m; sourceTree = "<group>"; };
 		FD078C5018FFAD21008EF932 /* NOMAD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NOMAD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD078C5318FFAD21008EF932 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FD078C5518FFAD21008EF932 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -68,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6611F321908ED51006B2275 /* libxml2.dylib in Frameworks */,
 				FD078C5618FFAD21008EF932 /* CoreGraphics.framework in Frameworks */,
 				FD078C5818FFAD21008EF932 /* UIKit.framework in Frameworks */,
 				FD078C5418FFAD21008EF932 /* Foundation.framework in Frameworks */,
@@ -87,6 +102,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D6611F231908EAAB006B2275 /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				D6611F241908EACA006B2275 /* TFHpple.h */,
+				D6611F251908EACA006B2275 /* TFHpple.m */,
+				D6611F261908EACA006B2275 /* TFHppleElement.h */,
+				D6611F271908EACA006B2275 /* TFHppleElement.m */,
+				D6611F281908EACA006B2275 /* XPathQuery.h */,
+				D6611F291908EACA006B2275 /* XPathQuery.m */,
+			);
+			name = Parser;
+			sourceTree = "<group>";
+		};
 		FD078C4718FFAD21008EF932 = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +137,7 @@
 		FD078C5218FFAD21008EF932 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D6611F2D1908EB3C006B2275 /* libxml2.dylib */,
 				FD078C5318FFAD21008EF932 /* Foundation.framework */,
 				FD078C5518FFAD21008EF932 /* CoreGraphics.framework */,
 				FD078C5718FFAD21008EF932 /* UIKit.framework */,
@@ -120,12 +149,15 @@
 		FD078C5918FFAD21008EF932 /* NOMAD */ = {
 			isa = PBXGroup;
 			children = (
+				D6611F231908EAAB006B2275 /* Parser */,
 				FDB54D4D18FFBC7F00442614 /* assets */,
 				FD078C6218FFAD21008EF932 /* AppDelegate.h */,
 				FD078C6318FFAD21008EF932 /* AppDelegate.m */,
 				FD078C6518FFAD21008EF932 /* Main.storyboard */,
 				FD078C6818FFAD21008EF932 /* ViewController.h */,
 				FD078C6918FFAD21008EF932 /* ViewController.m */,
+				D6611F2F1908EBCE006B2275 /* Product.h */,
+				D6611F301908EBCE006B2275 /* Product.m */,
 				FD078C6B18FFAD21008EF932 /* Images.xcassets */,
 				FD078C5A18FFAD21008EF932 /* Supporting Files */,
 				FDB54D5018FFC2A400442614 /* ScheduleTableViewCell.h */,
@@ -272,10 +304,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD078C6A18FFAD21008EF932 /* ViewController.m in Sources */,
+				D6611F2B1908EACA006B2275 /* TFHppleElement.m in Sources */,
+				D6611F2C1908EACA006B2275 /* XPathQuery.m in Sources */,
+				D6611F2A1908EACA006B2275 /* TFHpple.m in Sources */,
 				FD078C6418FFAD21008EF932 /* AppDelegate.m in Sources */,
 				FDB54D5518FFC78100442614 /* ItemDetailTableViewCell.m in Sources */,
 				FDB54D5218FFC2A400442614 /* ScheduleTableViewCell.m in Sources */,
 				FD078C6018FFAD21008EF932 /* main.m in Sources */,
+				D6611F311908EBCE006B2275 /* Product.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,6 +438,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NOMAD/NOMAD-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SDKROOT)/usr/include/libxml2",
+				);
 				INFOPLIST_FILE = "NOMAD/NOMAD-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -415,6 +456,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NOMAD/NOMAD-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SDKROOT)/usr/include/libxml2",
+				);
 				INFOPLIST_FILE = "NOMAD/NOMAD-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
