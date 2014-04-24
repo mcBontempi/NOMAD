@@ -2,7 +2,7 @@
 
 @class Product;
 
-@interface ItemDetailTableViewCell : UITableViewCell
+@interface ProductTableViewCell : UITableViewCell
 
 - (void)configureWithProduct:(Product *)product;
 

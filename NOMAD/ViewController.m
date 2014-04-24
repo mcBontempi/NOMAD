@@ -1,6 +1,7 @@
 #import "ViewController.h"
 #import "TFHpple.h"
 #import "Product.h"
+#import "ProductTableViewCell.h"
 
 @interface ViewController ()
 
@@ -9,74 +10,81 @@
 @end
 
 @implementation ViewController {
-    __weak IBOutlet UITableView *_tableView;
-    NSMutableArray *_products;
+  __weak IBOutlet UITableView *_tableView;
+  NSMutableArray *_products;
 }
 
 #pragma mark - Accessors
 
 - (UIView *)footerView
 {
-    if (!_footerView) {
-        _footerView = [[UIView alloc] init];
-    }
-    return _footerView;
+  if (!_footerView) {
+    _footerView = [[UIView alloc] init];
+  }
+  return _footerView;
 }
 
 #pragma mark - View Lifecycle
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+  [super viewDidLoad];
   
-    _products = [@[] mutableCopy];
+  _products = [@[] mutableCopy];
   
-    _tableView.tableFooterView = self.footerView;
+  _tableView.tableFooterView = self.footerView;
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
+  [super viewDidAppear:animated];
 }
 
 #pragma mark - UITableViewDelegate Methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+  return _products.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 50;
+  return 75;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+  ProductTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ITEMDETAILCELLIDENTIFIER" forIndexPath:indexPath];
   
+  cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
   
+  [cell configureWithProduct:_products[indexPath.row]];
   
-    return [tableView dequeueReusableCellWithIdentifier:@"ITEMDETAILCELLIDENTIFIER" forIndexPath:indexPath];
-  
-    return nil;
+  return cell;
 }
 
 - (void)addItemWithURL:(NSURL*)url
 {
-    NSData *htmlData = [NSData dataWithContentsOfURL:url];
-    
-    TFHpple *parser = [TFHpple hppleWithHTMLData:htmlData];
-    
-    NSString *xpathQueryString = @"//title";
-    NSArray *nodes = [parser searchWithXPathQuery:xpathQueryString];
+  [_tableView beginUpdates];
   
-    for (TFHppleElement *element in nodes) {
-        Product *product = [[Product alloc] init];
-        product.title = [[element firstChild] content];
-        [_products addObject:product];
-    }
+  NSData *htmlData = [NSData dataWithContentsOfURL:url];
   
-    [_tableView reloadData];
+  TFHpple *parser = [TFHpple hppleWithHTMLData:htmlData];
+  
+  NSString *xpathQueryString = @"//title";
+  NSArray *nodes = [parser searchWithXPathQuery:xpathQueryString];
+  
+  for (TFHppleElement *element in nodes) {
+    Product *product = [[Product alloc] init];
+    product.title = [[element firstChild] content];
+    [_products insertObject:product atIndex:0];
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    
+    [_tableView insertRowsAtIndexPaths:@[indexPath]   withRowAnimation:UITableViewRowAnimationTop];
+  }
+
+  [_tableView endUpdates];
 }
 
 #pragma mark - public methods

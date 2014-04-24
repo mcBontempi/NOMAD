@@ -1,7 +1,7 @@
-#import "ItemDetailTableViewCell.h"
+#import "ProductTableViewCell.h"
 #import "Product.h"
 
-@implementation ItemDetailTableViewCell {
+@implementation ProductTableViewCell {
   
   __weak IBOutlet UILabel *_titleLabel;
 }
