@@ -2,30 +2,16 @@
 
 @interface ViewController ()
 
-@property (nonatomic, strong) UIView *headerView;
 @property (nonatomic, strong) UIView *footerView;
 
 @end
 
-@implementation ViewController
-
-#pragma mark = Accessors
-
-- (UIView *)headerView
-{
-  if(!_headerView) {
-    CGFloat width = [UIScreen mainScreen].bounds.size.width;
-    
-    _headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,width,100)];
-    _headerView.backgroundColor = [UIColor colorWithRed:0.61960784 green:0 blue:0.36470588 alpha:1.0];
-    
-    UIImageView *nomadLogo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"NomadHeaderLogo"]];
-    //  [_headerView addSubview:nomadLogo];
-    // nomadLogo.frame = CGRectMake(0,0,100,100);//  _headerView.frame;
-    
-  }
-  return _headerView;
+@implementation ViewController {
+  
+  __weak IBOutlet UITableView *_tableView;
 }
+
+#pragma mark - Accessors
 
 - (UIView *)footerView
 {
@@ -39,10 +25,8 @@
 
 - (void)viewDidLoad
 {
-  
   [super viewDidLoad];
-  self.tableView.tableHeaderView = self.headerView;
-  self.tableView.tableFooterView = self.footerView;
+  _tableView.tableFooterView = self.footerView;
 }
 
 #pragma mark - UITableViewDelegate Methods
