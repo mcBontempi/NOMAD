@@ -3,30 +3,27 @@
 #import "ViewController.h"
 
 @implementation AppDelegate {
-    ViewController *_viewController;
+  ViewController *_viewController;
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [[UIApplication sharedApplication] setStatusBarHidden:YES
-                                            withAnimation:UIStatusBarAnimationFade];
-    
-    _viewController =  (ViewController*)self.window.rootViewController;
-    
-    
-    return YES;
+  [[UIApplication sharedApplication] setStatusBarHidden:YES
+                                          withAnimation:UIStatusBarAnimationFade];
+  
+  _viewController =  (ViewController*)self.window.rootViewController;
+  
+  return YES;
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    
-    UIPasteboard *pb = [UIPasteboard generalPasteboard];
-    NSString *text =  pb.string;
-    
-    _viewController.
-    
-    
+  UIPasteboard *pb = [UIPasteboard generalPasteboard];
+  NSString *text =  pb.string;
+  
+  if (text.length) {
+    [_viewController textPasted:(NSString *)text];
+  }
 }
-
 
 @end

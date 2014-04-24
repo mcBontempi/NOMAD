@@ -3,6 +3,6 @@
 @interface ViewController : UIViewController
 
 
-
+- (void)textPasted:(NSString *)text;
 
 @end

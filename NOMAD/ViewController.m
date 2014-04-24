@@ -9,10 +9,8 @@
 @end
 
 @implementation ViewController {
-    
     __weak IBOutlet UITableView *_tableView;
-    NSArray *_products;
-    
+    NSMutableArray *_products;
 }
 
 #pragma mark - Accessors
@@ -30,6 +28,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+  
+    _products = [@[] mutableCopy];
+  
     _tableView.tableFooterView = self.footerView;
 }
 
@@ -47,68 +48,44 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    switch (indexPath.row)
-    {
-        case 0:
-        case 1:
-            return 75;
-        case 2:
-            return 200;
-        case 3:
-        case 4:
-            return 48;
-    }
-    return 0;
+    return 50;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    switch (indexPath.row)
-    {
-        case 0:
-        case 1:
-            return [tableView dequeueReusableCellWithIdentifier:@"ITEMDETAILCELLIDENTIFIER" forIndexPath:indexPath];
-        case 2:
-            return [tableView dequeueReusableCellWithIdentifier:@"SCHEDULECELLIDENTIFIER" forIndexPath:indexPath];
-        case 3:
-            return [tableView dequeueReusableCellWithIdentifier:@"NEXTCELLIDENTIFIER" forIndexPath:indexPath];
-            
-        case 4:
-            return [tableView dequeueReusableCellWithIdentifier:@"SUPPORTCELLIDENTIFIER" forIndexPath:indexPath];
-            
-    }
-    
-    assert(0);
-    
+  
+  
+  
+    return [tableView dequeueReusableCellWithIdentifier:@"ITEMDETAILCELLIDENTIFIER" forIndexPath:indexPath];
+  
     return nil;
 }
 
-
-
-- (void)createItemWithURL:(NSURL*)url
+- (void)addItemWithURL:(NSURL*)url
 {
-    NSData *tutorialsHtmlData = [NSData dataWithContentsOfURL:url];
+    NSData *htmlData = [NSData dataWithContentsOfURL:url];
     
-    TFHpple *tutorialsParser = [TFHpple hppleWithHTMLData:tutorialsHtmlData];
+    TFHpple *parser = [TFHpple hppleWithHTMLData:htmlData];
     
-    NSString *tutorialsXpathQueryString = @"//div[@class='content-wrapper']/ul/li/a";
-    NSArray *tutorialsNodes = [tutorialsParser searchWithXPathQuery:tutorialsXpathQueryString];
-    
-    NSMutableArray *mutableArray = [[NSMutableArray alloc] init];
-    
-    for (TFHppleElement *element in tutorialsNodes) {
+    NSString *xpathQueryString = @"//title";
+    NSArray *nodes = [parser searchWithXPathQuery:xpathQueryString];
+  
+    for (TFHppleElement *element in nodes) {
         Product *product = [[Product alloc] init];
-        [mutableArray addObject:product];
-        
         product.title = [[element firstChild] content];
-        
-        product.url = [element objectForKey:@"href"];
+        [_products addObject:product];
     }
-    
-    _products = mutableArray;
+  
     [_tableView reloadData];
 }
 
+#pragma mark - public methods
 
+- (void)textPasted:(NSString *)text
+{
+  NSURL *url = [[NSURL alloc] initWithString:text];
+  
+  [self addItemWithURL:url];
+}
 
 @end
