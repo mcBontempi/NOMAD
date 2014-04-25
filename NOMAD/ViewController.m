@@ -7,10 +7,12 @@
 
 @property (nonatomic, strong) UIView *footerView;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *buttonToBottomConstraint;
 @end
 
 @implementation ViewController {
   __weak IBOutlet UITableView *_tableView;
+  __weak IBOutlet NSLayoutConstraint *_buttonToBottomConstraint;
   NSMutableArray *_products;
 }
 
@@ -33,6 +35,8 @@
   _products = [@[] mutableCopy];
   
   _tableView.tableFooterView = self.footerView;
+  
+  _buttonToBottomConstraint.constant = -100;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -85,6 +89,19 @@
   }
 
   [_tableView endUpdates];
+
+  [self showNextButton];
+}
+
+- (void)showNextButton
+{
+  [UIView animateWithDuration:1.0
+                   animations:^{
+                     
+                     _buttonToBottomConstraint.constant = 0;
+                     [self.view layoutIfNeeded];
+                     
+                   }];
 }
 
 #pragma mark - public methods

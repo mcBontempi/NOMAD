@@ -19,7 +19,6 @@
                             <tableView opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="v36-ST-ytu">
                                 <rect key="frame" x="0.0" y="113" width="320" height="390"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ITEMDETAILCELLIDENTIFIER" rowHeight="75" id="5as-Rb-Gzr" customClass="ProductTableViewCell">
                                         <rect key="frame" x="0.0" y="22" width="320" height="75"/>
@@ -99,6 +98,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="_buttonToBottomConstraint" destination="VMy-sO-RLq" id="4Cr-iK-RGr"/>
                         <outlet property="_tableView" destination="v36-ST-ytu" id="28z-OK-8QS"/>
                     </connections>
                 </viewController>
