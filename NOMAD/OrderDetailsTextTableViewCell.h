@@ -10,6 +10,6 @@
 
 @interface OrderDetailsTextTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *detailsImageView;
-@property (weak, nonatomic) IBOutlet UILabel *detailsLabel;
+@property (weak, nonatomic) IBOutlet UITextField *detailsTextField;
 
 @end
