@@ -13,7 +13,25 @@
 
 @end
 
-@implementation OrderDetailsViewController
+@implementation OrderDetailsViewController {
+  
+  
+  __weak IBOutlet NSLayoutConstraint *_buttonToBottomConstraint;
+}
+
+- (void)viewDidLoad
+{
+  [super viewDidLoad];
+  
+  _buttonToBottomConstraint.constant = -100;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+  [super viewDidAppear:animated];
+  
+  [self showGetQuoteButton];
+}
 
 #pragma mark - UITableViewDelegate Methods
 
@@ -70,4 +88,16 @@
   }
   return nil;
 }
+
+
+- (void)showGetQuoteButton
+{
+  [UIView animateWithDuration:1.0
+                   animations:^{
+                     _buttonToBottomConstraint.constant = 0;
+                     [self.view layoutIfNeeded];
+                     
+                   }];
+}
+
 @end

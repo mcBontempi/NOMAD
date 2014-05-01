@@ -7,12 +7,12 @@
 
 @property (nonatomic, strong) UIView *footerView;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *buttonToBottomConstraint;
 @end
 
 @implementation ViewController {
   __weak IBOutlet UITableView *_tableView;
   __weak IBOutlet NSLayoutConstraint *_buttonToBottomConstraint;
+  
   NSMutableArray *_products;
 }
 
