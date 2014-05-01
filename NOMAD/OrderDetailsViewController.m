@@ -25,6 +25,12 @@
   
   _buttonToBottomConstraint.constant = -100;
 }
+- (IBAction)cartButtonPressed:(id)sender {
+  
+  [self dismissViewControllerAnimated:YES completion:^{
+  }];
+  
+}
 
 - (void)viewDidAppear:(BOOL)animated
 {
