@@ -87,9 +87,9 @@
     
     [_tableView insertRowsAtIndexPaths:@[indexPath]   withRowAnimation:UITableViewRowAnimationTop];
   }
-
+  
   [_tableView endUpdates];
-
+  
   [self showNextButton];
 }
 
@@ -110,7 +110,9 @@
 {
   NSURL *url = [[NSURL alloc] initWithString:text];
   
-  [self addItemWithURL:url];
+  if (url) {
+    [self addItemWithURL:url];
+  }
 }
 
 @end

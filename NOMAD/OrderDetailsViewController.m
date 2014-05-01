@@ -17,9 +17,20 @@
 
 #pragma mark - UITableViewDelegate Methods
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+  return 2;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-  return 5;
+  switch (section) {
+    case 0:
+      return 2;
+    case 1:
+      return 1;
+  }
+  return 0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -29,12 +40,34 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  OrderDetailsViewController *cell = [tableView dequeueReusableCellWithIdentifier:@"ORDERDETAILSTEXTCELLIDENTIFIER" forIndexPath:indexPath];
-  
- // [cell configureWithProduct:_products[indexPath.row]];
-  
-  return cell;
+  switch (indexPath.section) {
+    case 0:
+    {
+      OrderDetailsTextTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ORDERDETAILSTEXTCELLIDENTIFIER" forIndexPath:indexPath];
+      
+      switch (indexPath.row) {
+        case 0:
+          [cell configureWithImage:@"" placeholderText:@"Full Name"];
+          return cell;
+        case 1:
+          [cell configureWithImage:@"" placeholderText:@"Email Address"];
+          return cell;
+      }
+      break;
+    }
+    case 1:
+    {
+      switch (indexPath.row) {
+        case 0:
+        {
+          OrderDetailsTextTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ORDERDETAILSTEXTCELLIDENTIFIER" forIndexPath:indexPath];
+          [cell configureWithImage:@"" placeholderText:@"House Name or No."];
+          return cell;
+        }
+      }
+      break;
+    }
+  }
+  return nil;
 }
-
-
 @end

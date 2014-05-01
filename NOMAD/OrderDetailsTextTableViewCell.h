@@ -9,7 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface OrderDetailsTextTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *detailsImageView;
-@property (weak, nonatomic) IBOutlet UITextField *detailsTextField;
-
+- (void)configureWithImage:(NSString *)path placeholderText:(NSString *)placeholderText;
 @end

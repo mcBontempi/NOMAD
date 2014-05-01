@@ -1,34 +1,14 @@
-//
-//  OrderDetailsTextTableViewCell.m
-//  NOMAD
-//
-//  Created by Daren taylor on 24/04/2014.
-//  Copyright (c) 2014 NOMAD. All rights reserved.
-//
-
 #import "OrderDetailsTextTableViewCell.h"
 
-@implementation OrderDetailsTextTableViewCell
-
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
-    }
-    return self;
+@implementation OrderDetailsTextTableViewCell {
+  __weak IBOutlet UIImageView *_iconImageView;
+  __weak IBOutlet UITextField *_textField;
 }
 
-- (void)awakeFromNib
+- (void)configureWithImage:(NSString *)imagePath placeholderText:(NSString *)placeholderText
 {
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+  _iconImageView.image = [UIImage imageNamed:imagePath];
+  _textField.placeholder = placeholderText;
 }
 
 @end
