@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C65DB061915760100C18C54 /* ExitIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C65DB051915760100C18C54 /* ExitIcon.png */; };
+		2C65DB081915760C00C18C54 /* CartIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C65DB071915760C00C18C54 /* CartIcon.png */; };
 		D6611F2A1908EACA006B2275 /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = D6611F251908EACA006B2275 /* TFHpple.m */; };
 		D6611F2B1908EACA006B2275 /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = D6611F271908EACA006B2275 /* TFHppleElement.m */; };
 		D6611F2C1908EACA006B2275 /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = D6611F291908EACA006B2275 /* XPathQuery.m */; };
@@ -44,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C65DB051915760100C18C54 /* ExitIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ExitIcon.png; path = assets/ExitIcon.png; sourceTree = "<group>"; };
+		2C65DB071915760C00C18C54 /* CartIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CartIcon.png; path = assets/CartIcon.png; sourceTree = "<group>"; };
 		D6611F241908EACA006B2275 /* TFHpple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TFHpple.h; path = Parser/TFHpple.h; sourceTree = "<group>"; };
 		D6611F251908EACA006B2275 /* TFHpple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TFHpple.m; path = Parser/TFHpple.m; sourceTree = "<group>"; };
 		D6611F261908EACA006B2275 /* TFHppleElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TFHppleElement.h; path = Parser/TFHppleElement.h; sourceTree = "<group>"; };
@@ -235,6 +239,8 @@
 			isa = PBXGroup;
 			children = (
 				FDB54D4E18FFBC8B00442614 /* NomadHeaderLogo.png */,
+				2C65DB051915760100C18C54 /* ExitIcon.png */,
+				2C65DB071915760C00C18C54 /* CartIcon.png */,
 			);
 			name = assets;
 			sourceTree = "<group>";
@@ -315,6 +321,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C65DB081915760C00C18C54 /* CartIcon.png in Resources */,
+				2C65DB061915760100C18C54 /* ExitIcon.png in Resources */,
 				FD078C6C18FFAD21008EF932 /* Images.xcassets in Resources */,
 				FD078C5E18FFAD21008EF932 /* InfoPlist.strings in Resources */,
 				FD078C6718FFAD21008EF932 /* Main.storyboard in Resources */,
