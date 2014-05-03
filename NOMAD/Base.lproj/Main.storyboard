@@ -72,7 +72,7 @@
                                     <segue destination="ZUw-dI-oJT" kind="modal" modalTransitionStyle="crossDissolve" id="Edf-TY-kPa"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NomadHeaderLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="ges-Tg-Pvs">
+                            <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NomadHeaderLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="ges-Tg-Pvs">
                                 <rect key="frame" x="93" y="-10" width="134" height="134"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>

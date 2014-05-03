@@ -9,6 +9,16 @@
 /* Begin PBXBuildFile section */
 		2C65DB061915760100C18C54 /* ExitIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C65DB051915760100C18C54 /* ExitIcon.png */; };
 		2C65DB081915760C00C18C54 /* CartIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C65DB071915760C00C18C54 /* CartIcon.png */; };
+		2C65DB0E191583D100C18C54 /* NomadHeaderLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C65DB0D191583D100C18C54 /* NomadHeaderLogo@2x.png */; };
+		2C65DB181915899F00C18C54 /* DeliveryIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C65DB0F1915899F00C18C54 /* DeliveryIcon.png */; };
+		2C65DB191915899F00C18C54 /* DetailsIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C65DB101915899F00C18C54 /* DetailsIcon.png */; };
+		2C65DB1A1915899F00C18C54 /* DetailsIconMini.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C65DB111915899F00C18C54 /* DetailsIconMini.png */; };
+		2C65DB1B1915899F00C18C54 /* DetailsIconSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C65DB121915899F00C18C54 /* DetailsIconSmall.png */; };
+		2C65DB1C1915899F00C18C54 /* DownArrowIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C65DB131915899F00C18C54 /* DownArrowIcon.png */; };
+		2C65DB1D1915899F00C18C54 /* EmailIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C65DB141915899F00C18C54 /* EmailIcon.png */; };
+		2C65DB1E1915899F00C18C54 /* HelpIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C65DB151915899F00C18C54 /* HelpIcon.png */; };
+		2C65DB1F1915899F00C18C54 /* HomeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C65DB161915899F00C18C54 /* HomeIcon.png */; };
+		2C65DB201915899F00C18C54 /* UserIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C65DB171915899F00C18C54 /* UserIcon.png */; };
 		D6611F2A1908EACA006B2275 /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = D6611F251908EACA006B2275 /* TFHpple.m */; };
 		D6611F2B1908EACA006B2275 /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = D6611F271908EACA006B2275 /* TFHppleElement.m */; };
 		D6611F2C1908EACA006B2275 /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = D6611F291908EACA006B2275 /* XPathQuery.m */; };
@@ -48,6 +58,16 @@
 /* Begin PBXFileReference section */
 		2C65DB051915760100C18C54 /* ExitIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ExitIcon.png; path = assets/ExitIcon.png; sourceTree = "<group>"; };
 		2C65DB071915760C00C18C54 /* CartIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CartIcon.png; path = assets/CartIcon.png; sourceTree = "<group>"; };
+		2C65DB0D191583D100C18C54 /* NomadHeaderLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "NomadHeaderLogo@2x.png"; path = "assets/NomadHeaderLogo@2x.png"; sourceTree = "<group>"; };
+		2C65DB0F1915899F00C18C54 /* DeliveryIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DeliveryIcon.png; path = assets/DeliveryIcon.png; sourceTree = "<group>"; };
+		2C65DB101915899F00C18C54 /* DetailsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DetailsIcon.png; path = assets/DetailsIcon.png; sourceTree = "<group>"; };
+		2C65DB111915899F00C18C54 /* DetailsIconMini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DetailsIconMini.png; path = assets/DetailsIconMini.png; sourceTree = "<group>"; };
+		2C65DB121915899F00C18C54 /* DetailsIconSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DetailsIconSmall.png; path = assets/DetailsIconSmall.png; sourceTree = "<group>"; };
+		2C65DB131915899F00C18C54 /* DownArrowIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DownArrowIcon.png; path = assets/DownArrowIcon.png; sourceTree = "<group>"; };
+		2C65DB141915899F00C18C54 /* EmailIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = EmailIcon.png; path = assets/EmailIcon.png; sourceTree = "<group>"; };
+		2C65DB151915899F00C18C54 /* HelpIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = HelpIcon.png; path = assets/HelpIcon.png; sourceTree = "<group>"; };
+		2C65DB161915899F00C18C54 /* HomeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = HomeIcon.png; path = assets/HomeIcon.png; sourceTree = "<group>"; };
+		2C65DB171915899F00C18C54 /* UserIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = UserIcon.png; path = assets/UserIcon.png; sourceTree = "<group>"; };
 		D6611F241908EACA006B2275 /* TFHpple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TFHpple.h; path = Parser/TFHpple.h; sourceTree = "<group>"; };
 		D6611F251908EACA006B2275 /* TFHpple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TFHpple.m; path = Parser/TFHpple.m; sourceTree = "<group>"; };
 		D6611F261908EACA006B2275 /* TFHppleElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TFHppleElement.h; path = Parser/TFHppleElement.h; sourceTree = "<group>"; };
@@ -239,6 +259,16 @@
 			isa = PBXGroup;
 			children = (
 				FDB54D4E18FFBC8B00442614 /* NomadHeaderLogo.png */,
+				2C65DB0D191583D100C18C54 /* NomadHeaderLogo@2x.png */,
+				2C65DB0F1915899F00C18C54 /* DeliveryIcon.png */,
+				2C65DB101915899F00C18C54 /* DetailsIcon.png */,
+				2C65DB111915899F00C18C54 /* DetailsIconMini.png */,
+				2C65DB121915899F00C18C54 /* DetailsIconSmall.png */,
+				2C65DB131915899F00C18C54 /* DownArrowIcon.png */,
+				2C65DB141915899F00C18C54 /* EmailIcon.png */,
+				2C65DB151915899F00C18C54 /* HelpIcon.png */,
+				2C65DB161915899F00C18C54 /* HomeIcon.png */,
+				2C65DB171915899F00C18C54 /* UserIcon.png */,
 				2C65DB051915760100C18C54 /* ExitIcon.png */,
 				2C65DB071915760C00C18C54 /* CartIcon.png */,
 			);
@@ -321,11 +351,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C65DB181915899F00C18C54 /* DeliveryIcon.png in Resources */,
+				2C65DB1E1915899F00C18C54 /* HelpIcon.png in Resources */,
 				2C65DB081915760C00C18C54 /* CartIcon.png in Resources */,
+				2C65DB191915899F00C18C54 /* DetailsIcon.png in Resources */,
+				2C65DB0E191583D100C18C54 /* NomadHeaderLogo@2x.png in Resources */,
+				2C65DB1C1915899F00C18C54 /* DownArrowIcon.png in Resources */,
 				2C65DB061915760100C18C54 /* ExitIcon.png in Resources */,
+				2C65DB201915899F00C18C54 /* UserIcon.png in Resources */,
+				2C65DB1B1915899F00C18C54 /* DetailsIconSmall.png in Resources */,
 				FD078C6C18FFAD21008EF932 /* Images.xcassets in Resources */,
+				2C65DB1A1915899F00C18C54 /* DetailsIconMini.png in Resources */,
+				2C65DB1D1915899F00C18C54 /* EmailIcon.png in Resources */,
 				FD078C5E18FFAD21008EF932 /* InfoPlist.strings in Resources */,
 				FD078C6718FFAD21008EF932 /* Main.storyboard in Resources */,
+				2C65DB1F1915899F00C18C54 /* HomeIcon.png in Resources */,
 				FDB54D4F18FFBC8B00442614 /* NomadHeaderLogo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
