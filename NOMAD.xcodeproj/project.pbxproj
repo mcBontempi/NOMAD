@@ -28,6 +28,7 @@
 		D6860A02191B5D3600A0812C /* CellOutlineBottom.png in Resources */ = {isa = PBXBuildFile; fileRef = D6860A01191B5D3600A0812C /* CellOutlineBottom.png */; };
 		D6860A05191B60A100A0812C /* CellOutline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D6860A03191B60A100A0812C /* CellOutline@2x.png */; };
 		D6860A06191B60A100A0812C /* CellOutlineBottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D6860A04191B60A100A0812C /* CellOutlineBottom@2x.png */; };
+		D6860A09191B6C8B00A0812C /* OrderDetailsDeliveryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6860A08191B6C8B00A0812C /* OrderDetailsDeliveryTableViewCell.m */; };
 		FD078C5418FFAD21008EF932 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD078C5318FFAD21008EF932 /* Foundation.framework */; };
 		FD078C5618FFAD21008EF932 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD078C5518FFAD21008EF932 /* CoreGraphics.framework */; };
 		FD078C5818FFAD21008EF932 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD078C5718FFAD21008EF932 /* UIKit.framework */; };
@@ -85,6 +86,8 @@
 		D6860A01191B5D3600A0812C /* CellOutlineBottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CellOutlineBottom.png; path = assets/CellOutlineBottom.png; sourceTree = "<group>"; };
 		D6860A03191B60A100A0812C /* CellOutline@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "CellOutline@2x.png"; path = "assets/CellOutline@2x.png"; sourceTree = "<group>"; };
 		D6860A04191B60A100A0812C /* CellOutlineBottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "CellOutlineBottom@2x.png"; path = "assets/CellOutlineBottom@2x.png"; sourceTree = "<group>"; };
+		D6860A07191B6C8B00A0812C /* OrderDetailsDeliveryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailsDeliveryTableViewCell.h; sourceTree = "<group>"; };
+		D6860A08191B6C8B00A0812C /* OrderDetailsDeliveryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailsDeliveryTableViewCell.m; sourceTree = "<group>"; };
 		FD078C5018FFAD21008EF932 /* NOMAD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NOMAD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD078C5318FFAD21008EF932 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FD078C5518FFAD21008EF932 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -250,6 +253,8 @@
 				FD9832A519090540005D3D04 /* OrderDetailsViewController.m */,
 				FD9832A7190905BC005D3D04 /* OrderDetailsTextTableViewCell.h */,
 				FD9832A8190905BC005D3D04 /* OrderDetailsTextTableViewCell.m */,
+				D6860A07191B6C8B00A0812C /* OrderDetailsDeliveryTableViewCell.h */,
+				D6860A08191B6C8B00A0812C /* OrderDetailsDeliveryTableViewCell.m */,
 			);
 			name = OrderDetailsViewController;
 			sourceTree = "<group>";
@@ -404,6 +409,7 @@
 				FD078C6A18FFAD21008EF932 /* ViewController.m in Sources */,
 				FDAD8F17191239EC00B2CEC2 /* NotesViewController.m in Sources */,
 				D6611F2B1908EACA006B2275 /* TFHppleElement.m in Sources */,
+				D6860A09191B6C8B00A0812C /* OrderDetailsDeliveryTableViewCell.m in Sources */,
 				D6611F2C1908EACA006B2275 /* XPathQuery.m in Sources */,
 				D6611F2A1908EACA006B2275 /* TFHpple.m in Sources */,
 				FD078C6418FFAD21008EF932 /* AppDelegate.m in Sources */,

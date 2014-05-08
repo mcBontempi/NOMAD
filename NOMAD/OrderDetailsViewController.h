@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OrderDetailsViewController : UIViewController
+@interface OrderDetailsViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource>
+
+@property (nonatomic, strong) NSString *deliverySlot;
 
 @end

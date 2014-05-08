@@ -1,22 +1,20 @@
-//
-//  OrderDetailsViewController.m
-//  NOMAD
-//
-//  Created by Daren taylor on 24/04/2014.
-//  Copyright (c) 2014 NOMAD. All rights reserved.
-//
-
 #import "OrderDetailsViewController.h"
 #import "OrderDetailsTextTableViewCell.h"
+#import "OrderDetailsDeliveryTableViewCell.h"
 
 @interface OrderDetailsViewController ()
 
+@property (nonatomic, assign) BOOL showPicker;
+
 @end
 
+
 @implementation OrderDetailsViewController {
-    
-    
     __weak IBOutlet NSLayoutConstraint *_buttonToBottomConstraint;
+    __weak IBOutlet UIPickerView *_deliveryPicker;
+    
+  
+    __weak IBOutlet UITableView *_tableView;
 }
 
 - (void)viewDidLoad
@@ -24,6 +22,13 @@
     [super viewDidLoad];
     
     _buttonToBottomConstraint.constant = -100;
+    
+    _deliveryPicker.delegate = self;
+    
+    [_deliveryPicker setBackgroundColor:[UIColor whiteColor]];
+    
+    _tableView.tableFooterView = [[UIView alloc] init];
+    
 }
 - (IBAction)cartButtonPressed:(id)sender {
     
@@ -35,8 +40,6 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    [self showGetQuoteButton];
 }
 
 #pragma mark - UITableViewDelegate Methods
@@ -54,7 +57,7 @@
         case 1:
             return 1;
         case 2:
-            return 1;
+            return 1 + (self.showPicker ? 1 : 0);
     }
     return 0;
 }
@@ -64,16 +67,30 @@
     return 20;
 }
 
+/*
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 20)];
     [headerView setBackgroundColor:[UIColor whiteColor]];
     return headerView;
 }
-
+*/
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    switch (indexPath.section) {
+        case 2:
+        {
+            switch (indexPath.row) {
+                case 1:
+                {
+                    return 162;
+                }
+            }
+            
+        }
+    }
+    
     return 50;
 }
 
@@ -111,9 +128,18 @@
             switch (indexPath.row) {
                 case 0:
                 {
-                    OrderDetailsTextTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ORDERDETAILSDELIVERYCELLIDENTIFIER" forIndexPath:indexPath];
+                    OrderDetailsDeliveryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ORDERDETAILSDELIVERYCELLIDENTIFIER" forIndexPath:indexPath];
+                    [cell configureWithDeliverySlotText:self.deliverySlot];
                     return cell;
                 }
+                case 1:
+                {
+                    OrderDetailsDeliveryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ORDERDETAILSDELIVERYPICKERCELLIDENTIFIER" forIndexPath:indexPath];
+                   // [cell configureWithDeliverySlotText:self.deliverySlot];
+                    return cell;
+                }
+                    
+                    
             }
             break;
         }
@@ -129,14 +155,43 @@
             switch (indexPath.row) {
                 case 0:
                 {
-                    
-                    
+                    self.showPicker = YES;
                 }
             }
             
         }
     }
 }
+
+#pragma mark - PickerView DataSource
+
+- (NSInteger)numberOfComponentsInPickerView:
+(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView
+numberOfRowsInComponent:(NSInteger)component
+{
+    return self.deliverySlots.count;
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView
+             titleForRow:(NSInteger)row
+            forComponent:(NSInteger)component
+{
+    return self.deliverySlots[row];
+}
+
+#pragma mark - PickerView Delegate
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row
+      inComponent:(NSInteger)component
+{
+    self.deliverySlot = self.deliverySlots[row];
+}
+
+#pragma mark - general stuff
 
 - (void)showGetQuoteButton
 {
@@ -146,6 +201,32 @@
                          [self.view layoutIfNeeded];
                          
                      }];
+}
+
+
+- (NSArray *)deliverySlots
+{
+    return @[@"Delivery from 6-7PM", @"Delivery from 7-8PM", @"Delivery from 8-9"];
+}
+
+
+- (void)setDeliverySlot:(NSString *)deliverySlot
+{
+    _deliverySlot = deliverySlot;
+    
+    [_tableView reloadData];
+}
+
+
+- (void)setShowPicker:(BOOL)showPicker
+{
+    [_tableView beginUpdates];
+    
+    _showPicker = showPicker;
+    
+    [_tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:2]] withRowAnimation:UITableViewRowAnimationTop];
+    
+    [_tableView endUpdates];
 }
 
 @end
