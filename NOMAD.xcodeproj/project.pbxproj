@@ -24,6 +24,10 @@
 		D6611F2C1908EACA006B2275 /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = D6611F291908EACA006B2275 /* XPathQuery.m */; };
 		D6611F311908EBCE006B2275 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = D6611F301908EBCE006B2275 /* Product.m */; };
 		D6611F321908ED51006B2275 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D6611F2D1908EB3C006B2275 /* libxml2.dylib */; };
+		D68609FF191B5B6400A0812C /* CellOutline.png in Resources */ = {isa = PBXBuildFile; fileRef = D68609FD191B5B6400A0812C /* CellOutline.png */; };
+		D6860A02191B5D3600A0812C /* CellOutlineBottom.png in Resources */ = {isa = PBXBuildFile; fileRef = D6860A01191B5D3600A0812C /* CellOutlineBottom.png */; };
+		D6860A05191B60A100A0812C /* CellOutline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D6860A03191B60A100A0812C /* CellOutline@2x.png */; };
+		D6860A06191B60A100A0812C /* CellOutlineBottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D6860A04191B60A100A0812C /* CellOutlineBottom@2x.png */; };
 		FD078C5418FFAD21008EF932 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD078C5318FFAD21008EF932 /* Foundation.framework */; };
 		FD078C5618FFAD21008EF932 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD078C5518FFAD21008EF932 /* CoreGraphics.framework */; };
 		FD078C5818FFAD21008EF932 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD078C5718FFAD21008EF932 /* UIKit.framework */; };
@@ -77,6 +81,10 @@
 		D6611F2D1908EB3C006B2275 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		D6611F2F1908EBCE006B2275 /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Product.h; sourceTree = "<group>"; };
 		D6611F301908EBCE006B2275 /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product.m; sourceTree = "<group>"; };
+		D68609FD191B5B6400A0812C /* CellOutline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CellOutline.png; path = assets/CellOutline.png; sourceTree = "<group>"; };
+		D6860A01191B5D3600A0812C /* CellOutlineBottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CellOutlineBottom.png; path = assets/CellOutlineBottom.png; sourceTree = "<group>"; };
+		D6860A03191B60A100A0812C /* CellOutline@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "CellOutline@2x.png"; path = "assets/CellOutline@2x.png"; sourceTree = "<group>"; };
+		D6860A04191B60A100A0812C /* CellOutlineBottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "CellOutlineBottom@2x.png"; path = "assets/CellOutlineBottom@2x.png"; sourceTree = "<group>"; };
 		FD078C5018FFAD21008EF932 /* NOMAD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NOMAD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD078C5318FFAD21008EF932 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FD078C5518FFAD21008EF932 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -258,6 +266,10 @@
 		FDB54D4D18FFBC7F00442614 /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				D6860A03191B60A100A0812C /* CellOutline@2x.png */,
+				D6860A04191B60A100A0812C /* CellOutlineBottom@2x.png */,
+				D68609FD191B5B6400A0812C /* CellOutline.png */,
+				D6860A01191B5D3600A0812C /* CellOutlineBottom.png */,
 				FDB54D4E18FFBC8B00442614 /* NomadHeaderLogo.png */,
 				2C65DB0D191583D100C18C54 /* NomadHeaderLogo@2x.png */,
 				2C65DB0F1915899F00C18C54 /* DeliveryIcon.png */,
@@ -352,6 +364,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C65DB181915899F00C18C54 /* DeliveryIcon.png in Resources */,
+				D6860A05191B60A100A0812C /* CellOutline@2x.png in Resources */,
 				2C65DB1E1915899F00C18C54 /* HelpIcon.png in Resources */,
 				2C65DB081915760C00C18C54 /* CartIcon.png in Resources */,
 				2C65DB191915899F00C18C54 /* DetailsIcon.png in Resources */,
@@ -360,9 +373,12 @@
 				2C65DB061915760100C18C54 /* ExitIcon.png in Resources */,
 				2C65DB201915899F00C18C54 /* UserIcon.png in Resources */,
 				2C65DB1B1915899F00C18C54 /* DetailsIconSmall.png in Resources */,
+				D6860A06191B60A100A0812C /* CellOutlineBottom@2x.png in Resources */,
 				FD078C6C18FFAD21008EF932 /* Images.xcassets in Resources */,
 				2C65DB1A1915899F00C18C54 /* DetailsIconMini.png in Resources */,
+				D6860A02191B5D3600A0812C /* CellOutlineBottom.png in Resources */,
 				2C65DB1D1915899F00C18C54 /* EmailIcon.png in Resources */,
+				D68609FF191B5B6400A0812C /* CellOutline.png in Resources */,
 				FD078C5E18FFAD21008EF932 /* InfoPlist.strings in Resources */,
 				FD078C6718FFAD21008EF932 /* Main.storyboard in Resources */,
 				2C65DB1F1915899F00C18C54 /* HomeIcon.png in Resources */,

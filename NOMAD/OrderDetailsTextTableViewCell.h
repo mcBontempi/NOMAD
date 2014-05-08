@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface OrderDetailsTextTableViewCell : UITableViewCell
-- (void)configureWithImage:(NSString *)path placeholderText:(NSString *)placeholderText;
+- (void)configureWithImagePath:(NSString *)path placeholderText:(NSString *)placeholderText lastRow:(BOOL)lastRow;
 @end
