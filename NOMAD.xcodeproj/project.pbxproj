@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C6115AD19243934000D80B8 /* LessIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C61159C19243934000D80B8 /* LessIcon.png */; };
+		2C6115AE19243934000D80B8 /* PlusIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C61159D19243934000D80B8 /* PlusIcon.png */; };
+		2C6115AF19243934000D80B8 /* UserIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C61159E19243934000D80B8 /* UserIcon.png */; };
 		2C65DB061915760100C18C54 /* ExitIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C65DB051915760100C18C54 /* ExitIcon.png */; };
 		2C65DB081915760C00C18C54 /* CartIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C65DB071915760C00C18C54 /* CartIcon.png */; };
 		2C65DB0E191583D100C18C54 /* NomadHeaderLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C65DB0D191583D100C18C54 /* NomadHeaderLogo@2x.png */; };
@@ -61,6 +64,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C61159C19243934000D80B8 /* LessIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LessIcon.png; path = assets/LessIcon.png; sourceTree = "<group>"; };
+		2C61159D19243934000D80B8 /* PlusIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PlusIcon.png; path = assets/PlusIcon.png; sourceTree = "<group>"; };
+		2C61159E19243934000D80B8 /* UserIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = UserIcon.png; path = assets/UserIcon.png; sourceTree = "<group>"; };
 		2C65DB051915760100C18C54 /* ExitIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ExitIcon.png; path = assets/ExitIcon.png; sourceTree = "<group>"; };
 		2C65DB071915760C00C18C54 /* CartIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CartIcon.png; path = assets/CartIcon.png; sourceTree = "<group>"; };
 		2C65DB0D191583D100C18C54 /* NomadHeaderLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "NomadHeaderLogo@2x.png"; path = "assets/NomadHeaderLogo@2x.png"; sourceTree = "<group>"; };
@@ -271,6 +277,9 @@
 		FDB54D4D18FFBC7F00442614 /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				2C61159C19243934000D80B8 /* LessIcon.png */,
+				2C61159D19243934000D80B8 /* PlusIcon.png */,
+				2C61159E19243934000D80B8 /* UserIcon.png */,
 				D6860A03191B60A100A0812C /* CellOutline@2x.png */,
 				D6860A04191B60A100A0812C /* CellOutlineBottom@2x.png */,
 				D68609FD191B5B6400A0812C /* CellOutline.png */,
@@ -339,6 +348,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = NOMAD;
 				TargetAttributes = {
+					FD078C4F18FFAD21008EF932 = {
+						DevelopmentTeam = 3QJKB89XYA;
+					};
 					FD078C7018FFAD21008EF932 = {
 						TestTargetID = FD078C4F18FFAD21008EF932;
 					};
@@ -368,6 +380,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C6115AE19243934000D80B8 /* PlusIcon.png in Resources */,
 				2C65DB181915899F00C18C54 /* DeliveryIcon.png in Resources */,
 				D6860A05191B60A100A0812C /* CellOutline@2x.png in Resources */,
 				2C65DB1E1915899F00C18C54 /* HelpIcon.png in Resources */,
@@ -377,6 +390,7 @@
 				2C65DB1C1915899F00C18C54 /* DownArrowIcon.png in Resources */,
 				2C65DB061915760100C18C54 /* ExitIcon.png in Resources */,
 				2C65DB201915899F00C18C54 /* UserIcon.png in Resources */,
+				2C6115AD19243934000D80B8 /* LessIcon.png in Resources */,
 				2C65DB1B1915899F00C18C54 /* DetailsIconSmall.png in Resources */,
 				D6860A06191B60A100A0812C /* CellOutlineBottom@2x.png in Resources */,
 				FD078C6C18FFAD21008EF932 /* Images.xcassets in Resources */,
@@ -387,6 +401,7 @@
 				FD078C5E18FFAD21008EF932 /* InfoPlist.strings in Resources */,
 				FD078C6718FFAD21008EF932 /* Main.storyboard in Resources */,
 				2C65DB1F1915899F00C18C54 /* HomeIcon.png in Resources */,
+				2C6115AF19243934000D80B8 /* UserIcon.png in Resources */,
 				FDB54D4F18FFBC8B00442614 /* NomadHeaderLogo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -542,6 +557,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NOMAD/NOMAD-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -551,6 +568,7 @@
 				);
 				INFOPLIST_FILE = "NOMAD/NOMAD-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -560,6 +578,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NOMAD/NOMAD-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -569,6 +589,7 @@
 				);
 				INFOPLIST_FILE = "NOMAD/NOMAD-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
