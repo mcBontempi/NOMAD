@@ -54,7 +54,7 @@
         case 1:
             return 1;
         case 2:
-            return 1 + (self.showPicker ? 1 : 0);
+            return 2;
     }
     return 0;
 }
@@ -63,15 +63,6 @@
 {
     return 20;
 }
-
-/*
- - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
- {
- UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 20)];
- [headerView setBackgroundColor:[UIColor whiteColor]];
- return headerView;
- }
- */
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -137,8 +128,6 @@
                     [cell configureWithDeliveryPickerDelegate:self];
                     return cell;
                 }
-                    
-                    
             }
             break;
         }
@@ -166,7 +155,6 @@
                     self.showPicker = !self.showPicker;
                 }
             }
-            
         }
     }
 }
@@ -217,7 +205,6 @@ numberOfRowsInComponent:(NSInteger)component
     return @[@"Choose Delivery Slot",@"6 - 7PM", @"7 - 8PM", @"8 - 9PM",@"9 - 10PM", @"10 - 11PM", @"11 - 12PM"];
 }
 
-
 - (void)setDeliverySlot:(NSString *)deliverySlot
 {
     _deliverySlot = deliverySlot;
@@ -235,13 +222,7 @@ numberOfRowsInComponent:(NSInteger)component
     
     [_tableView beginUpdates];
     
-    if (self.showPicker) {
-        
-        [_tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:2]] withRowAnimation:UITableViewRowAnimationMiddle];
-    }
-    else {
-        [_tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:2]] withRowAnimation:UITableViewRowAnimationMiddle];
-    }
+    [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:2]] withRowAnimation:self.showPicker ? UITableViewRowAnimationBottom : UITableViewRowAnimationTop];
     
     [_tableView endUpdates];
 }
