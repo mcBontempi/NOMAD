@@ -37,6 +37,9 @@
   _tableView.tableFooterView = self.footerView;
   
   _buttonToBottomConstraint.constant = -100;
+    
+    
+[self showNextButton];
 }
 
 - (void)viewDidAppear:(BOOL)animated

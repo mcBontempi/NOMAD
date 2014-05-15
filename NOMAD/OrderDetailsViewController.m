@@ -1,8 +1,10 @@
 #import "OrderDetailsViewController.h"
 #import "OrderDetailsTextTableViewCell.h"
 #import "OrderDetailsDeliveryTableViewCell.h"
+#import "OrderDetailsDeliveryPickerTableViewCell.h"
+#import "OrderDetailsTextTableViewCellDelegate.h"
 
-@interface OrderDetailsViewController ()
+@interface OrderDetailsViewController () <OrderDetailsTextTableViewCellDelegate>
 
 @property (nonatomic, assign) BOOL showPicker;
 
@@ -11,9 +13,6 @@
 
 @implementation OrderDetailsViewController {
     __weak IBOutlet NSLayoutConstraint *_buttonToBottomConstraint;
-    __weak IBOutlet UIPickerView *_deliveryPicker;
-    
-  
     __weak IBOutlet UITableView *_tableView;
 }
 
@@ -23,13 +22,11 @@
     
     _buttonToBottomConstraint.constant = -100;
     
-    _deliveryPicker.delegate = self;
-    
-    [_deliveryPicker setBackgroundColor:[UIColor whiteColor]];
-    
     _tableView.tableFooterView = [[UIView alloc] init];
     
+    self.deliverySlot = @"Choose Delivery Slot";
 }
+
 - (IBAction)cartButtonPressed:(id)sender {
     
     [self dismissViewControllerAnimated:YES completion:^{
@@ -68,30 +65,31 @@
 }
 
 /*
-- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 20)];
-    [headerView setBackgroundColor:[UIColor whiteColor]];
-    return headerView;
-}
-*/
+ - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+ {
+ UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 20)];
+ [headerView setBackgroundColor:[UIColor whiteColor]];
+ return headerView;
+ }
+ */
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSInteger retVal = 50;
+    
     switch (indexPath.section) {
         case 2:
         {
             switch (indexPath.row) {
                 case 1:
                 {
-                    return 162;
+                    retVal = self.showPicker ? 162 : 0;
                 }
             }
             
         }
     }
-    
-    return 50;
+    return retVal;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -103,10 +101,10 @@
             
             switch (indexPath.row) {
                 case 0:
-                    [cell configureWithImagePath:@"UserIcon" placeholderText:@"Full Name" lastRow:NO];
+                    [cell configureWithImagePath:@"UserIcon" placeholderText:@"Full Name" lastRow:NO delegate:self];
                     return cell;
                 case 1:
-                    [cell configureWithImagePath:@"EmailIcon" placeholderText:@"Email Address" lastRow:YES];
+                    [cell configureWithImagePath:@"EmailIcon" placeholderText:@"Email Address" lastRow:YES delegate:self];
                     return cell;
             }
             break;
@@ -117,7 +115,7 @@
                 case 0:
                 {
                     OrderDetailsTextTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ORDERDETAILSTEXTCELLIDENTIFIER" forIndexPath:indexPath];
-                    [cell configureWithImagePath:@"HomeIcon" placeholderText:@"House Name or No." lastRow:YES];
+                    [cell configureWithImagePath:@"HomeIcon" placeholderText:@"House Name or No." lastRow:YES delegate:self];
                     return cell;
                 }
             }
@@ -134,8 +132,9 @@
                 }
                 case 1:
                 {
-                    OrderDetailsDeliveryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ORDERDETAILSDELIVERYPICKERCELLIDENTIFIER" forIndexPath:indexPath];
-                   // [cell configureWithDeliverySlotText:self.deliverySlot];
+                    OrderDetailsDeliveryPickerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ORDERDETAILSDELIVERYPICKERCELLIDENTIFIER" forIndexPath:indexPath];
+                    
+                    [cell configureWithDeliveryPickerDelegate:self];
                     return cell;
                 }
                     
@@ -155,7 +154,16 @@
             switch (indexPath.row) {
                 case 0:
                 {
-                    self.showPicker = YES;
+                    OrderDetailsTextTableViewCell *cell;
+                    
+                    cell = (OrderDetailsTextTableViewCell *)[_tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+                    [cell resignResponder];
+                    cell = (OrderDetailsTextTableViewCell *)[_tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+                    [cell resignResponder];
+                    cell = (OrderDetailsTextTableViewCell *)[_tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
+                    [cell resignResponder];
+                    
+                    self.showPicker = !self.showPicker;
                 }
             }
             
@@ -206,7 +214,7 @@ numberOfRowsInComponent:(NSInteger)component
 
 - (NSArray *)deliverySlots
 {
-    return @[@"Delivery from 6-7PM", @"Delivery from 7-8PM", @"Delivery from 8-9"];
+    return @[@"Choose Delivery Slot",@"6 - 7PM", @"7 - 8PM", @"8 - 9PM",@"9 - 10PM", @"10 - 11PM", @"11 - 12PM"];
 }
 
 
@@ -214,19 +222,77 @@ numberOfRowsInComponent:(NSInteger)component
 {
     _deliverySlot = deliverySlot;
     
-    [_tableView reloadData];
-}
-
-
-- (void)setShowPicker:(BOOL)showPicker
-{
     [_tableView beginUpdates];
     
-    _showPicker = showPicker;
-    
-    [_tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:2]] withRowAnimation:UITableViewRowAnimationTop];
+    [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:2]] withRowAnimation:UITableViewRowAnimationFade];
     
     [_tableView endUpdates];
 }
+
+- (void)setShowPicker:(BOOL)showPicker
+{
+    _showPicker = showPicker;
+    
+    [_tableView beginUpdates];
+    
+    if (self.showPicker) {
+        
+        [_tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:2]] withRowAnimation:UITableViewRowAnimationMiddle];
+    }
+    else {
+        [_tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:2]] withRowAnimation:UITableViewRowAnimationMiddle];
+    }
+    
+    [_tableView endUpdates];
+}
+
+#pragma mark - OrderDetailsTextTableViewCellDelegate
+
+- (void)returnKeyPressed:(OrderDetailsTextTableViewCell *)sender
+{
+    NSIndexPath *indexPath = [_tableView indexPathForCell:sender];
+    
+    OrderDetailsTextTableViewCell *cell;
+    
+    switch (indexPath.section) {
+        case 0:
+        {
+            switch (indexPath.row) {
+                case 0:
+                {
+                    cell = (OrderDetailsTextTableViewCell *)[_tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+                    [cell becomeResponder];
+                    break;
+                }
+                case 1:
+                {
+                    cell = (OrderDetailsTextTableViewCell *)[_tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
+                    [cell becomeResponder];
+                    break;
+                }
+            }
+            break;
+            
+        }
+        case 1:
+        {
+            switch (indexPath.row) {
+                case 0:
+                {
+                    [sender resignResponder];
+                    if(!self.showPicker)
+                        self.showPicker = YES;
+                    
+                    break;
+                }
+            }
+            break;
+        }
+            
+    }
+    
+    
+}
+
 
 @end
