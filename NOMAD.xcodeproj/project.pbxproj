@@ -356,7 +356,7 @@
 				ORGANIZATIONNAME = NOMAD;
 				TargetAttributes = {
 					FD078C4F18FFAD21008EF932 = {
-						DevelopmentTeam = 3U786KR73N;
+						DevelopmentTeam = 3QJKB89XYA;
 					};
 					FD078C7018FFAD21008EF932 = {
 						TestTargetID = FD078C4F18FFAD21008EF932;

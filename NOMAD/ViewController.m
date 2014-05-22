@@ -39,7 +39,7 @@
   _buttonToBottomConstraint.constant = -100;
     
     
-[self showNextButton];
+//[self showNextButton];
 }
 
 - (void)viewDidAppear:(BOOL)animated
