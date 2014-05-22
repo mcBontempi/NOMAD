@@ -3,10 +3,16 @@
 #import "OrderDetailsDeliveryTableViewCell.h"
 #import "OrderDetailsDeliveryPickerTableViewCell.h"
 #import "OrderDetailsTextTableViewCellDelegate.h"
+#import "OrderDetailsPostcodeTableViewCell.h"
+#import "OrderDetailsPostcodeTableViewCellDelegate.h"
+#import <AFNetworking/AFHTTPSessionManager.h>
 
-@interface OrderDetailsViewController () <OrderDetailsTextTableViewCellDelegate>
+@interface OrderDetailsViewController () <OrderDetailsTextTableViewCellDelegate, OrderDetailsPostcodeTableViewCellDelegate>
 
 @property (nonatomic, assign) BOOL showPicker;
+@property (nonatomic, assign) BOOL showAddressPicker;
+
+@property (nonatomic, strong) NSArray *shortlistedAddresses;
 
 @end
 
@@ -52,7 +58,7 @@
         case 0:
             return 2;
         case 1:
-            return 1;
+            return 3;
         case 2:
             return 2;
     }
@@ -67,19 +73,37 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger retVal = 50;
-    
+
     switch (indexPath.section) {
+            
+        case 1:
+        {
+            switch (indexPath.row)
+            {
+                case 2:
+                {
+                    retVal = self.showAddressPicker ? 162 : 0;
+                    break;
+                }
+            }
+            break;
+        }
         case 2:
         {
-            switch (indexPath.row) {
+            switch (indexPath.row)
+            {
                 case 1:
                 {
                     retVal = self.showPicker ? 162 : 0;
+                    break;
                 }
             }
-            
+            break;
         }
     }
+    
+    NSLog(@"%@, %d",  indexPath.description, retVal);
+    
     return retVal;
 }
 
@@ -107,6 +131,19 @@
                 {
                     OrderDetailsTextTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ORDERDETAILSTEXTCELLIDENTIFIER" forIndexPath:indexPath];
                     [cell configureWithImagePath:@"HomeIcon" placeholderText:@"House Name or No." lastRow:YES delegate:self];
+                    return cell;
+                }
+                case 1:
+                {
+                    OrderDetailsPostcodeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ORDERDETAILSPOSTCODECELLIDENTIFIER" forIndexPath:indexPath];
+                    [cell configureWithlastRow:YES delegate:self];
+                    return cell;
+                }
+                case 2:
+                {
+                    OrderDetailsDeliveryPickerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ORDERDETAILSDELIVERYPICKERCELLIDENTIFIER" forIndexPath:indexPath];
+                    
+                    [cell configureWithDeliveryPickerDelegate:self];
                     return cell;
                 }
             }
@@ -170,21 +207,27 @@
 - (NSInteger)pickerView:(UIPickerView *)pickerView
 numberOfRowsInComponent:(NSInteger)component
 {
-    return self.deliverySlots.count;
+    if (self.showPicker)return self.deliverySlots.count;
+    
+    return _shortlistedAddresses.count;
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView
              titleForRow:(NSInteger)row
             forComponent:(NSInteger)component
 {
-    return self.deliverySlots[row];
+    if (self.showPicker)return self.deliverySlots[row];
+    
+    return _shortlistedAddresses[row][0];
 }
 
 #pragma mark - PickerView Delegate
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row
       inComponent:(NSInteger)component
 {
-    self.deliverySlot = self.deliverySlots[row];
+    if (self.showPicker) self.deliverySlot = self.deliverySlots[row];
+    
+  //  return _shortlistedAddresses[row][0];
 }
 
 #pragma mark - general stuff
@@ -227,9 +270,20 @@ numberOfRowsInComponent:(NSInteger)component
     [_tableView endUpdates];
 }
 
+- (void)setShowAddressPicker:(BOOL)showAddressPicker
+{
+    _showAddressPicker = showAddressPicker;
+    
+    [_tableView beginUpdates];
+    
+    [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:2 inSection:1]] withRowAnimation:self.showAddressPicker ? UITableViewRowAnimationBottom : UITableViewRowAnimationTop];
+    
+    [_tableView endUpdates];
+}
+
 #pragma mark - OrderDetailsTextTableViewCellDelegate
 
-- (void)returnKeyPressed:(OrderDetailsTextTableViewCell *)sender
+- (void)returnKeyPressedFromOrderDetailsTextTableViewCell:(OrderDetailsTextTableViewCell *)sender
 {
     NSIndexPath *indexPath = [_tableView indexPathForCell:sender];
     
@@ -260,20 +314,95 @@ numberOfRowsInComponent:(NSInteger)component
             switch (indexPath.row) {
                 case 0:
                 {
-                    [sender resignResponder];
-                    if(!self.showPicker)
-                        self.showPicker = YES;
+                    cell = (OrderDetailsTextTableViewCell *)[_tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
+                    [cell becomeResponder];
                     
+                    
+                    /*[sender resignResponder];
+                     if(!self.showPicker)
+                     self.showPicker = YES;
+                     */
                     break;
                 }
             }
             break;
         }
+    }
+}
+
+
+- (void)searchForPostcode:(NSString *)postcode
+{
+    NSString *baseURLString = @"https://api.ideal-postcodes.co.uk:443";
+    
+    NSURL *baseURL = [NSURL URLWithString:baseURLString];
+    NSDictionary *parameters = @{@"api_key": @"ak_hvhc4kd1FPe2RMqfDybAnJwfnKM5j"};
+    
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
+    
+    [manager GET:@"/v1/postcodes/ID11QD/" parameters:parameters success:^(NSURLSessionDataTask *task, NSDictionary *dict) {
+        
+        
+        _shortlistedAddresses = [self parsePostcodeDictionary:dict];
+        
+        OrderDetailsDeliveryPickerTableViewCell *cell = (OrderDetailsDeliveryPickerTableViewCell *)[_tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:1]];
+        [cell reloadPicker];
+        
+        /*
+        NSError *error = nil;
+    
+        NSObject *object =[NSJSONSerialization JSONObjectWithData:[responseObject dataUsingEncoding:NSUTF8StringEncoding]options:NSJSONReadingMutableContainers error:&error];
+        
+        */
+        
+        NSLog(@"%@", dict);
+
+        
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Retrieving Postcode"
+                                                            message:[error localizedDescription]
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+    }];
+}
+
+
+- (NSArray *)parsePostcodeDictionary:(NSDictionary *)dict
+{
+    if (dict[@"result"]) {
+    
+        NSArray *results = dict[@"result"];
+    
+        
+        NSMutableArray *shortlist = [@[] mutableCopy];
+    
+        [results enumerateObjectsUsingBlock:^(NSDictionary *dict, NSUInteger idx, BOOL *stop) {
             
+            NSString *line1 = dict[@"line_1"];
+            
+            [shortlist addObject:@[line1]];
+            
+        }];
+    
+    
+        return [shortlist copy];
     }
     
-    
+    return @[];
 }
+
+
+- (void)returnKeyPressedFromOrderDetailsPostcodeTableViewCell:(OrderDetailsPostcodeTableViewCell *)sender
+{
+    [sender resignResponder];
+    
+    [self searchForPostcode:sender.fieldText];
+    if(!self.showAddressPicker)
+        self.showAddressPicker = YES;
+ }
 
 
 @end

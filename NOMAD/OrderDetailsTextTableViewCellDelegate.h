@@ -10,6 +10,6 @@
 
 @protocol OrderDetailsTextTableViewCellDelegate <NSObject>
 
-- (void)returnKeyPressed:(OrderDetailsTextTableViewCell *)sender;
+- (void)returnKeyPressedFromOrderDetailsTextTableViewCell:(OrderDetailsTextTableViewCell *)sender;
 
 @end

@@ -12,4 +12,6 @@
 
 - (void)configureWithDeliveryPickerDelegate:(id<UIPickerViewDelegate>)pickerDelegate;
 
+- (void)reloadPicker;
+
 @end

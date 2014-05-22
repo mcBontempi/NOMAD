@@ -23,4 +23,10 @@
     _deliveryPicker.delegate = pickerDelegate;
 }
 
+- (void)reloadPicker
+{
+    
+    [_deliveryPicker reloadAllComponents];
+}
+
 @end
