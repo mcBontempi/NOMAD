@@ -20,8 +20,11 @@
     _textField.delegate = self;
 }
 
-- (void)configureWithImagePath:(NSString *)imagePath placeholderText:(NSString *)placeholderText lastRow:(BOOL)lastRow delegate:(id<OrderDetailsTextTableViewCellDelegate>)delegate
+- (void)configureWithImagePath:(NSString *)imagePath placeholderText:(NSString *)placeholderText lastRow:(BOOL)lastRow delegate:(id<OrderDetailsTextTableViewCellDelegate>)delegate keyboardType:(enum UIKeyboardType)keyboardType autoCapitalisationType:(UITextAutocapitalizationType)autoCapitalisationType
 {
+    _textField.keyboardType = keyboardType;
+    _textField.autocapitalizationType = autoCapitalisationType;
+    
     _iconImageView.image = [UIImage imageNamed:imagePath];
     _textField.placeholder = placeholderText;
     _cellOutlineBottom.hidden = !lastRow;
@@ -42,6 +45,11 @@
 {
     [_delegate returnKeyPressedFromOrderDetailsTextTableViewCell:self];
     return NO;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [_delegate beganEditingOrderDetailsTextTableViewCell:self];
 }
 
 @end

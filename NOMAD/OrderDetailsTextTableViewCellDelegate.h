@@ -11,5 +11,6 @@
 @protocol OrderDetailsTextTableViewCellDelegate <NSObject>
 
 - (void)returnKeyPressedFromOrderDetailsTextTableViewCell:(OrderDetailsTextTableViewCell *)sender;
+- (void)beganEditingOrderDetailsTextTableViewCell:(OrderDetailsTextTableViewCell *)sender;
 
 @end

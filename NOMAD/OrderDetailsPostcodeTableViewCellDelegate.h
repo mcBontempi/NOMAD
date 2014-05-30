@@ -12,4 +12,8 @@
 
 - (void)returnKeyPressedFromOrderDetailsPostcodeTableViewCell:(OrderDetailsPostcodeTableViewCell *)sender;
 
+- (void)beganEditingOrderDetailsPostcodeTableViewCell:(OrderDetailsPostcodeTableViewCell *)sender;
+
+- (void)findTappedOnOrderDetailsPostcodeTableViewCell:(OrderDetailsPostcodeTableViewCell *)sender;
+
 @end

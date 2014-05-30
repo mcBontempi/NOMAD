@@ -24,6 +24,8 @@
     _textField.placeholder = @"Post Code";
     _cellOutlineBottom.hidden = !lastRow;
     _delegate = delegate;
+    
+    _textField.autocapitalizationType = UITextAutocapitalizationTypeAllCharacters;
 }
 
 - (void)becomeResponder
@@ -42,9 +44,19 @@
     return NO;
 }
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [_delegate beganEditingOrderDetailsPostcodeTableViewCell:self];
+}
+
 - (NSString *)fieldText
 {
     return _textField.text;
+}
+
+- (IBAction)findTapped:(id)sender
+{
+    [_delegate findTappedOnOrderDetailsPostcodeTableViewCell:self];
 }
 
 @end

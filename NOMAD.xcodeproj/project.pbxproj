@@ -101,6 +101,7 @@
 		D6860A04191B60A100A0812C /* CellOutlineBottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "CellOutlineBottom@2x.png"; path = "assets/CellOutlineBottom@2x.png"; sourceTree = "<group>"; };
 		D6860A07191B6C8B00A0812C /* OrderDetailsDeliveryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailsDeliveryTableViewCell.h; sourceTree = "<group>"; };
 		D6860A08191B6C8B00A0812C /* OrderDetailsDeliveryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailsDeliveryTableViewCell.m; sourceTree = "<group>"; };
+		D6BCFC1D19385A5700C56557 /* OrderDetailsTextTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderDetailsTextTableViewCell.h; sourceTree = "<group>"; };
 		D6EECBD719249599007C8839 /* OrderDetailsDeliveryPickerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailsDeliveryPickerTableViewCell.h; sourceTree = "<group>"; };
 		D6EECBD819249599007C8839 /* OrderDetailsDeliveryPickerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailsDeliveryPickerTableViewCell.m; sourceTree = "<group>"; };
 		D6EECBDA1924AC0B007C8839 /* OrderDetailsTextTableViewCellDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderDetailsTextTableViewCellDelegate.h; sourceTree = "<group>"; };
@@ -275,6 +276,7 @@
 				D63172A5192DD925007E6278 /* OrderDetailsPostcodeTableViewCell.h */,
 				D63172A6192DD925007E6278 /* OrderDetailsPostcodeTableViewCell.m */,
 				D63172A9192DDA81007E6278 /* OrderDetailsPostcodeTableViewCellDelegate.h */,
+				D6BCFC1D19385A5700C56557 /* OrderDetailsTextTableViewCell.h */,
 				FD9832A8190905BC005D3D04 /* OrderDetailsTextTableViewCell.m */,
 				D6EECBDA1924AC0B007C8839 /* OrderDetailsTextTableViewCellDelegate.h */,
 				FD9832A419090540005D3D04 /* OrderDetailsViewController.h */,
@@ -369,7 +371,7 @@
 				ORGANIZATIONNAME = NOMAD;
 				TargetAttributes = {
 					FD078C4F18FFAD21008EF932 = {
-						DevelopmentTeam = 3QJKB89XYA;
+						DevelopmentTeam = 3U786KR73N;
 					};
 					FD078C7018FFAD21008EF932 = {
 						TestTargetID = FD078C4F18FFAD21008EF932;

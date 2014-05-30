@@ -181,6 +181,9 @@
                                                         <color key="titleColor" red="0.61778714359999998" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="findTapped:" destination="BjC-M9-5VG" eventType="touchUpInside" id="gyt-A3-P2T"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -302,11 +305,11 @@
                             <constraint firstItem="mpk-qM-j2l" firstAttribute="centerX" secondItem="lRT-YQ-0lw" secondAttribute="centerX" id="D29-Mz-N19"/>
                             <constraint firstItem="mpk-qM-j2l" firstAttribute="centerY" secondItem="lRT-YQ-0lw" secondAttribute="centerY" id="JFd-RM-3Mf"/>
                             <constraint firstItem="pwe-sv-Jax" firstAttribute="leading" secondItem="PRA-Wb-Pvq" secondAttribute="leading" id="JqE-Zk-sbO"/>
-                            <constraint firstItem="vg3-kf-A4S" firstAttribute="top" secondItem="pwe-sv-Jax" secondAttribute="bottom" id="ME7-nd-aim"/>
                             <constraint firstItem="pwe-sv-Jax" firstAttribute="top" secondItem="lRT-YQ-0lw" secondAttribute="bottom" id="MGe-21-rEN"/>
                             <constraint firstAttribute="trailing" secondItem="pwe-sv-Jax" secondAttribute="trailing" id="QZY-xa-vAS"/>
                             <constraint firstAttribute="trailing" secondItem="lRT-YQ-0lw" secondAttribute="trailing" id="Sxg-ho-avB"/>
                             <constraint firstItem="lRT-YQ-0lw" firstAttribute="leading" secondItem="PRA-Wb-Pvq" secondAttribute="leading" id="W4t-qg-evT"/>
+                            <constraint firstAttribute="bottom" secondItem="pwe-sv-Jax" secondAttribute="bottom" constant="65" id="XIe-eL-2h4"/>
                             <constraint firstItem="vg3-kf-A4S" firstAttribute="leading" secondItem="PRA-Wb-Pvq" secondAttribute="leading" id="fdP-aW-KEX"/>
                             <constraint firstItem="lRT-YQ-0lw" firstAttribute="top" secondItem="PRA-Wb-Pvq" secondAttribute="top" id="wUJ-tP-2R4"/>
                         </constraints>
@@ -315,6 +318,7 @@
                     <connections>
                         <outlet property="_buttonToBottomConstraint" destination="737-b3-gFP" id="sN2-AC-qlW"/>
                         <outlet property="_tableView" destination="pwe-sv-Jax" id="q5B-a8-Dfd"/>
+                        <outlet property="_tableViewToBottomConstraint" destination="XIe-eL-2h4" id="TPd-rs-kme"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2gi-Ld-9IZ" userLabel="First Responder" sceneMemberID="firstResponder"/>

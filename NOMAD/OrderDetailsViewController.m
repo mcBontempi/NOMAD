@@ -19,6 +19,9 @@
 
 @implementation OrderDetailsViewController {
     __weak IBOutlet NSLayoutConstraint *_buttonToBottomConstraint;
+    
+    __weak IBOutlet NSLayoutConstraint *_tableViewToBottomConstraint;
+    
     __weak IBOutlet UITableView *_tableView;
 }
 
@@ -26,11 +29,33 @@
 {
     [super viewDidLoad];
     
-    _buttonToBottomConstraint.constant = -100;
+    _buttonToBottomConstraint.constant = -65;
+    _tableViewToBottomConstraint.constant = 0;
     
     _tableView.tableFooterView = [[UIView alloc] init];
     
     self.deliverySlot = @"Choose Delivery Slot";
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardDidHideNotification object:nil];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+
+- (void)keyboardDidShow:(NSNotification *)notification
+{
+    NSDictionary *userInfo = [notification userInfo];
+    CGSize size = [[userInfo objectForKey: UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    _tableViewToBottomConstraint.constant = size.height;
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification
+{
+    _tableViewToBottomConstraint.constant = _buttonToBottomConstraint.constant + 65;
 }
 
 - (IBAction)cartButtonPressed:(id)sender {
@@ -55,11 +80,11 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     switch (section) {
-        case 0:
+            case 0:
             return 2;
-        case 1:
+            case 1:
             return 3;
-        case 2:
+            case 2:
             return 2;
     }
     return 0;
@@ -73,14 +98,14 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger retVal = 50;
-
+    
     switch (indexPath.section) {
             
-        case 1:
+            case 1:
         {
             switch (indexPath.row)
             {
-                case 2:
+                    case 2:
                 {
                     retVal = self.showAddressPicker ? 162 : 0;
                     break;
@@ -88,11 +113,11 @@
             }
             break;
         }
-        case 2:
+            case 2:
         {
             switch (indexPath.row)
             {
-                case 1:
+                    case 1:
                 {
                     retVal = self.showPicker ? 162 : 0;
                     break;
@@ -110,36 +135,36 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     switch (indexPath.section) {
-        case 0:
+            case 0:
         {
             OrderDetailsTextTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ORDERDETAILSTEXTCELLIDENTIFIER" forIndexPath:indexPath];
             
             switch (indexPath.row) {
-                case 0:
-                    [cell configureWithImagePath:@"UserIcon" placeholderText:@"Full Name" lastRow:NO delegate:self];
+                    case 0:
+                    [cell configureWithImagePath:@"UserIcon" placeholderText:@"Full Name" lastRow:NO delegate:self keyboardType:UIKeyboardTypeDefault autoCapitalisationType:UITextAutocapitalizationTypeWords];
                     return cell;
-                case 1:
-                    [cell configureWithImagePath:@"EmailIcon" placeholderText:@"Email Address" lastRow:YES delegate:self];
+                    case 1:
+                    [cell configureWithImagePath:@"EmailIcon" placeholderText:@"Email Address" lastRow:YES delegate:self keyboardType:UIKeyboardTypeEmailAddress autoCapitalisationType:UITextAutocapitalizationTypeNone];
                     return cell;
             }
             break;
         }
-        case 1:
+            case 1:
         {
             switch (indexPath.row) {
-                case 0:
+                    case 0:
                 {
                     OrderDetailsTextTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ORDERDETAILSTEXTCELLIDENTIFIER" forIndexPath:indexPath];
-                    [cell configureWithImagePath:@"HomeIcon" placeholderText:@"House Name or No." lastRow:YES delegate:self];
+                    [cell configureWithImagePath:@"HomeIcon" placeholderText:@"House Name or No." lastRow:YES delegate:self keyboardType:UIKeyboardTypeDefault autoCapitalisationType:UITextAutocapitalizationTypeWords];
                     return cell;
                 }
-                case 1:
+                    case 1:
                 {
                     OrderDetailsPostcodeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ORDERDETAILSPOSTCODECELLIDENTIFIER" forIndexPath:indexPath];
                     [cell configureWithlastRow:YES delegate:self];
                     return cell;
                 }
-                case 2:
+                    case 2:
                 {
                     OrderDetailsDeliveryPickerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ORDERDETAILSDELIVERYPICKERCELLIDENTIFIER" forIndexPath:indexPath];
                     
@@ -149,16 +174,16 @@
             }
             break;
         }
-        case 2:
+            case 2:
         {
             switch (indexPath.row) {
-                case 0:
+                    case 0:
                 {
                     OrderDetailsDeliveryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ORDERDETAILSDELIVERYCELLIDENTIFIER" forIndexPath:indexPath];
                     [cell configureWithDeliverySlotText:self.deliverySlot];
                     return cell;
                 }
-                case 1:
+                    case 1:
                 {
                     OrderDetailsDeliveryPickerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ORDERDETAILSDELIVERYPICKERCELLIDENTIFIER" forIndexPath:indexPath];
                     
@@ -175,25 +200,36 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     switch (indexPath.section) {
-        case 2:
+            case 2:
         {
             switch (indexPath.row) {
-                case 0:
+                    case 0:
                 {
-                    OrderDetailsTextTableViewCell *cell;
-                    
-                    cell = (OrderDetailsTextTableViewCell *)[_tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-                    [cell resignResponder];
-                    cell = (OrderDetailsTextTableViewCell *)[_tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
-                    [cell resignResponder];
-                    cell = (OrderDetailsTextTableViewCell *)[_tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
-                    [cell resignResponder];
+                    [self hideKeyboardForAllCellsWithFields];
                     
                     self.showPicker = !self.showPicker;
                 }
             }
         }
     }
+}
+
+- (void)hideKeyboardForAllCellsWithFields
+{
+    
+    OrderDetailsTextTableViewCell *cell;
+    
+    cell = (OrderDetailsTextTableViewCell *)[_tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    [cell resignResponder];
+    cell = (OrderDetailsTextTableViewCell *)[_tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+    [cell resignResponder];
+    cell = (OrderDetailsTextTableViewCell *)[_tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
+    [cell resignResponder];
+    
+    OrderDetailsPostcodeTableViewCell *postcodeCell;
+    postcodeCell = (OrderDetailsPostcodeTableViewCell *)[_tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
+    [postcodeCell resignResponder];
+    
 }
 
 #pragma mark - PickerView DataSource
@@ -227,7 +263,7 @@ numberOfRowsInComponent:(NSInteger)component
 {
     if (self.showPicker) self.deliverySlot = self.deliverySlots[row];
     
-  //  return _shortlistedAddresses[row][0];
+    //  return _shortlistedAddresses[row][0];
 }
 
 #pragma mark - general stuff
@@ -261,24 +297,49 @@ numberOfRowsInComponent:(NSInteger)component
 
 - (void)setShowPicker:(BOOL)showPicker
 {
+    if (self.showAddressPicker) {
+        self.showAddressPicker = NO;
+    }
+    
     _showPicker = showPicker;
+    
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:1 inSection:2];
+    
+    if (_showPicker) {
+        [_tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
     
     [_tableView beginUpdates];
     
-    [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:2]] withRowAnimation:self.showPicker ? UITableViewRowAnimationBottom : UITableViewRowAnimationTop];
+    [_tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:self.showPicker ? UITableViewRowAnimationBottom : UITableViewRowAnimationTop];
     
     [_tableView endUpdates];
+    
+    
 }
 
 - (void)setShowAddressPicker:(BOOL)showAddressPicker
 {
+    if (self.showPicker) {
+        self.showPicker = NO;
+    }
+    
     _showAddressPicker = showAddressPicker;
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:2 inSection:1];
+    
+    if (_showAddressPicker) {
+        [_tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
     
     [_tableView beginUpdates];
     
-    [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:2 inSection:1]] withRowAnimation:self.showAddressPicker ? UITableViewRowAnimationBottom : UITableViewRowAnimationTop];
+    
+    [_tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:self.showAddressPicker ? UITableViewRowAnimationBottom : UITableViewRowAnimationTop];
     
     [_tableView endUpdates];
+    
 }
 
 #pragma mark - OrderDetailsTextTableViewCellDelegate
@@ -290,16 +351,16 @@ numberOfRowsInComponent:(NSInteger)component
     OrderDetailsTextTableViewCell *cell;
     
     switch (indexPath.section) {
-        case 0:
+            case 0:
         {
             switch (indexPath.row) {
-                case 0:
+                    case 0:
                 {
                     cell = (OrderDetailsTextTableViewCell *)[_tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
                     [cell becomeResponder];
                     break;
                 }
-                case 1:
+                    case 1:
                 {
                     cell = (OrderDetailsTextTableViewCell *)[_tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
                     [cell becomeResponder];
@@ -309,10 +370,10 @@ numberOfRowsInComponent:(NSInteger)component
             break;
             
         }
-        case 1:
+            case 1:
         {
             switch (indexPath.row) {
-                case 0:
+                    case 0:
                 {
                     cell = (OrderDetailsTextTableViewCell *)[_tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
                     [cell becomeResponder];
@@ -330,6 +391,33 @@ numberOfRowsInComponent:(NSInteger)component
     }
 }
 
+- (void)beganEditingOrderDetailsTextTableViewCell:(OrderDetailsTextTableViewCell *)sender
+{
+    NSIndexPath *indexPath = [_tableView indexPathForCell:sender];
+    
+    [_tableView scrollToRowAtIndexPath:indexPath
+                      atScrollPosition:(UITableViewScrollPositionTop) animated:YES];
+}
+
+- (void)beganEditingOrderDetailsPostcodeTableViewCell:(OrderDetailsPostcodeTableViewCell *)sender
+{
+    NSIndexPath *indexPath = [_tableView indexPathForCell:sender];
+    
+    [_tableView scrollToRowAtIndexPath:indexPath
+                      atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+}
+
+- (void)findTappedOnOrderDetailsPostcodeTableViewCell:(OrderDetailsPostcodeTableViewCell *)sender
+{
+    if (sender.fieldText.length && self.showAddressPicker == NO) {
+        [self hideKeyboardForAllCellsWithFields];
+        
+        [self doFindForPostcode:sender.fieldText];
+    }
+    else if(self.showAddressPicker == YES) {
+        self.showAddressPicker = NO;
+    }
+}
 
 - (void)searchForPostcode:(NSString *)postcode
 {
@@ -349,14 +437,14 @@ numberOfRowsInComponent:(NSInteger)component
         [cell reloadPicker];
         
         /*
-        NSError *error = nil;
-    
-        NSObject *object =[NSJSONSerialization JSONObjectWithData:[responseObject dataUsingEncoding:NSUTF8StringEncoding]options:NSJSONReadingMutableContainers error:&error];
-        
-        */
+         NSError *error = nil;
+         
+         NSObject *object =[NSJSONSerialization JSONObjectWithData:[responseObject dataUsingEncoding:NSUTF8StringEncoding]options:NSJSONReadingMutableContainers error:&error];
+         
+         */
         
         NSLog(@"%@", dict);
-
+        
         
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -373,12 +461,12 @@ numberOfRowsInComponent:(NSInteger)component
 - (NSArray *)parsePostcodeDictionary:(NSDictionary *)dict
 {
     if (dict[@"result"]) {
-    
+        
         NSArray *results = dict[@"result"];
-    
+        
         
         NSMutableArray *shortlist = [@[] mutableCopy];
-    
+        
         [results enumerateObjectsUsingBlock:^(NSDictionary *dict, NSUInteger idx, BOOL *stop) {
             
             NSString *line1 = dict[@"line_1"];
@@ -386,23 +474,28 @@ numberOfRowsInComponent:(NSInteger)component
             [shortlist addObject:@[line1]];
             
         }];
-    
-    
+        
+        
         return [shortlist copy];
     }
     
     return @[];
 }
 
+- (void)doFindForPostcode:(NSString *)postcode
+{
+    [self searchForPostcode:postcode];
+    if(!self.showAddressPicker)
+    self.showAddressPicker = YES;
+
+}
 
 - (void)returnKeyPressedFromOrderDetailsPostcodeTableViewCell:(OrderDetailsPostcodeTableViewCell *)sender
 {
     [sender resignResponder];
-    
-    [self searchForPostcode:sender.fieldText];
-    if(!self.showAddressPicker)
-        self.showAddressPicker = YES;
- }
+
+    [self doFindForPostcode:sender.fieldText];
+}
 
 
 @end
